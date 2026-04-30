@@ -1,0 +1,42 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Synapse AWS Lambda Example
+
+Globals:
+  Function:
+    Runtime: nodejs20.x
+    Timeout: 10
+    Environment:
+      Variables:
+        SYNAPSE_API_KEY: !Ref SynapseApiKey
+        SYNAPSE_WORKSPACE_ID: !Ref SynapseWorkspaceId
+
+Parameters:
+  SynapseApiKey:
+    Type: String
+    NoEcho: true
+  SynapseWorkspaceId:
+    Type: String
+
+Resources:
+  TrackFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: dist/track.handler
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /api/track
+            Method: post
+
+  IdentifyFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: dist/identify.handler
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /api/identify
+            Method: post

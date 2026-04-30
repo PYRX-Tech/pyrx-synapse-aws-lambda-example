@@ -1,0 +1,8 @@
+{
+  "name": "@pyrx-examples/aws-lambda",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": { "build": "tsc" },
+  "dependencies": { "@pyrx/synapse": "latest" },
+  "devDependencies": { "typescript": "^5.0.0", "@types/aws-lambda": "^8.10.0", "@types/node": "^20.0.0" }
+}
