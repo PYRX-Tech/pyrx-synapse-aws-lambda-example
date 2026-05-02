@@ -24,6 +24,6 @@ export const remove: APIGatewayProxyHandler = async (event) => {
 };
 
 export const preview: APIGatewayProxyHandler = async (event) => {
-  const { attributes } = JSON.parse(event.body || '{}');
-  return { statusCode: 200, body: JSON.stringify(await synapse.templates.preview(event.pathParameters!.slug!, { attributes })) };
+  const body = JSON.parse(event.body || '{}');
+  return { statusCode: 200, body: JSON.stringify(await synapse.templates.preview(event.pathParameters!.slug!, body)) };
 };
